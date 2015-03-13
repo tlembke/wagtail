@@ -1,0 +1,127 @@
+
+<%= form_for(@person, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.form_group :family_name do |f| %>
+      <%= f.label :family_name, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :family_name, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :given_names do |f| %>
+      <%= f.label :given_names, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :given_names, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :known_as do |f| %>
+      <%= f.label :known_as, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :known_as, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :address_line do |f| %>
+      <%= f.label :address_line, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :address_line, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :address_line_2 do |f| %>
+      <%= f.label :address_line_2, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :address_line_2, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :town do |f| %>
+      <%= f.label :town, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :town, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :state do |f| %>
+      <%= f.label :state, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :state, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :postcode do |f| %>
+      <%= f.label :postcode, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :postcode, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :sex do |f| %>
+      <%= f.label :sex, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.number_field :sex, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :dob do |f| %>
+      <%= f.label :dob, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.date_select :dob, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :ihi do |f| %>
+      <%= f.label :ihi, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :ihi, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :dva do |f| %>
+      <%= f.label :dva, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :dva, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :phone do |f| %>
+      <%= f.label :phone, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :phone, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :created_by do |f| %>
+      <%= f.label :created_by, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.number_field :created_by, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="form-actions col-md-offset-3 col-md-9">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to "Cancel", people_path, class: 'btn' %>
+  </div>
+
+  <%= editable @person, :family_name %>
+<% end %>
+

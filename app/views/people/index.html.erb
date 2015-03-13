@@ -1,0 +1,67 @@
+<% @title = "Listing people" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/People/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_person_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Person
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Family name</th>
+          <th>Given names</th>
+          <th>Known as</th>
+          <th>Address line</th>
+          <th>Address line 2</th>
+          <th>Town</th>
+          <th>State</th>
+          <th>Postcode</th>
+          <th>Sex</th>
+          <th>Dob</th>
+          <th>Ihi</th>
+          <th>Dva</th>
+          <th>Phone</th>
+          <th>Created by</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.family_name %></td>
+          <td><%= person.given_names %></td>
+          <td><%= person.known_as %></td>
+          <td><%= person.address_line %></td>
+          <td><%= person.address_line_2 %></td>
+          <td><%= person.town %></td>
+          <td><%= person.state %></td>
+          <td><%= person.postcode %></td>
+          <td><%= person.sex %></td>
+          <td><%= person.dob %></td>
+          <td><%= person.ihi %></td>
+          <td><%= person.dva %></td>
+          <td><%= person.phone %></td>
+          <td><%= person.created_by %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), person, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_person_path(person), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), person, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @people.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No people.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

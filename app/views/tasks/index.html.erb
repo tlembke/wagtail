@@ -1,0 +1,55 @@
+<% @title = "Listing tasks" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Tasks/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_task_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Task
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Goal</th>
+          <th>Person</th>
+          <th>Team</th>
+          <th>Active</th>
+          <th>Parent</th>
+          <th>Task type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.goal_id %></td>
+          <td><%= task.person_id %></td>
+          <td><%= task.team %></td>
+          <td><%= task.active %></td>
+          <td><%= task.parent %></td>
+          <td><%= task.task_type %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), task, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_task_path(task), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), task, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @tasks.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No tasks.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

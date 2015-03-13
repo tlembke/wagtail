@@ -1,0 +1,3 @@
+$("#condition option:eq(0)").after("<option value='<%= @condition %>' selected><%= @condition.name %></option>");
+$('#condition').selectpicker('refresh');
+

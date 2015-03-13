@@ -1,0 +1,49 @@
+<% @title = "Listing measurevalues" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Measurevalues/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_measurevalue_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Measurevalue
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Person</th>
+          <th>Measure</th>
+          <th>Value</th>
+          <th>Value date</th>
+          <th>Created by</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @measurevalues.each do |measurevalue| %>
+        <tr>
+          <td><%= measurevalue.person_id %></td>
+          <td><%= measurevalue.measure_id %></td>
+          <td><%= measurevalue.value %></td>
+          <td><%= measurevalue.value_date %></td>
+          <td><%= measurevalue.created_by %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), measurevalue, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_measurevalue_path(measurevalue), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), measurevalue, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @measurevalues.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No measurevalues.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

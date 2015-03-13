@@ -1,0 +1,26 @@
+<% @title = "Showing condition" %>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-md-2 form-label">Name</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @condition.name %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Abbreviation</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @condition.abbreviation %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-actions col-md-offset-2">
+    <%= link_to icon_tag("pencil") + ' Edit', edit_condition_path(@condition), class: 'btn btn-primary' %>
+    <%= link_to 'Back', conditions_path, class: 'btn' %>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<% @title = "Listing goals" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Goals/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_goal_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Goal
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Condition</th>
+          <th>Patient</th>
+          <th>Measure</th>
+          <th>Active</th>
+          <th>Parent</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @goals.each do |goal| %>
+        <tr>
+          <td><%= goal.title %></td>
+          <td><%= goal.description %></td>
+          <td><%= goal.condition_id %></td>
+          <td><%= goal.patient_id %></td>
+          <td><%= goal.measure_id %></td>
+          <td><%= goal.active %></td>
+          <td><%= goal.parent %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), goal, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_goal_path(goal), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), goal, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @goals.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No goals.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

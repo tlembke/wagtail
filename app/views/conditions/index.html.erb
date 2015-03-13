@@ -1,0 +1,43 @@
+<% @title = "Listing conditions" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Conditions/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_condition_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Condition
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Abbreviation</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @conditions.each do |condition| %>
+        <tr>
+          <td><%= condition.name %></td>
+          <td><%= condition.abbreviation %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), condition, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_condition_path(condition), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), condition, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @conditions.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No conditions.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

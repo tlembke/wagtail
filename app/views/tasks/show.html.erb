@@ -1,0 +1,80 @@
+<% @title = "Showing task" %>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-md-2 form-label">Title</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.title %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Description</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.description %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Goal</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.goal_id %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Person</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.person_id %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Team</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.team %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Active</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.active %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Parent</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.parent %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 form-label">Task type</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @task.task_type %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-actions col-md-offset-2">
+    <%= link_to icon_tag("pencil") + ' Edit', edit_task_path(@task), class: 'btn btn-primary' %>
+    <%= link_to 'Back', tasks_path, class: 'btn' %>
+  </div>
+</div>

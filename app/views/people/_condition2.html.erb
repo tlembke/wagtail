@@ -1,0 +1,21 @@
+<%= form_for(@person, :url => { :action => :add_condition },html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.form_group :condition do |f| %>
+      <%= f.label :condition, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <select name='condition' class="selectpicker" data-style="btn-primary">
+        <option>Add New...</option>
+        <option data-divider="true"></option>
+        <%= options_from_collection_for_select(Condition.all, :id, :name) %>
+        </select>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+
+   <div class="form-actions col-md-offset-3 col-md-9">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+
+<% end %>
