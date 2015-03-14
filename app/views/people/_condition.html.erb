@@ -1,9 +1,7 @@
 
-  <%= form_for(@person, :url => { :action => :add_condition },html: { class: 'form-horizontal' }) do |f| %>
-
       
-      <%= f.label :condition, class: 'form-label col-md-2' %>
-        <div class='col-md-8' id='condition_div'>
+     
+        <div class='col-md-10 col-md-offset-2' id='condition_div'>
           <select name='<%= @person.id %>' id='condition' class="selectpicker">
           <option value="" selected>Add condition...</ option>
           <%= options_from_collection_for_select(Condition.order(:name).all, :id, :name, :name) %>
@@ -12,7 +10,7 @@
           </select>
         </div>
      
-    <% end %>
+    
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -33,5 +31,4 @@
   </div>
 </div>
 <!-- End Modal -->
-<div class='form-group'>
-</div>
+

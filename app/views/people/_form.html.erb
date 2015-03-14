@@ -70,7 +70,9 @@
     <%= f.form_group :sex do |f| %>
       <%= f.label :sex, class: 'form-label col-md-2' %>
       <div class='col-md-8'>
-        <%= f.number_field :sex, class: 'form-control' %>
+        <label class='form-label'><%= f.radio_button :sex, '0' %> Male </label>
+        <label class='form-label'><%= f.radio_button :sex, '1' %> Female </label> 
+        
         <%= f.error_messages %>
       </div>
     <% end %>

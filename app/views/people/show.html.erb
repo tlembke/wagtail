@@ -1,135 +1,33 @@
-<% @title = "Showing person" %>
+<% @title = @person.full_name_known_as %>
 
 <div class="form-horizontal">
+ 
   <div class="form-group">
-    <label class="col-md-2 form-label">Family name</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.family_name %>
-      </span>
-    </div>
+    <label class="col-md-2 form-label">Date of Birth</label>
+
+      <div class="col-md-3">
+        <%= @person.dob.strftime("%d/%m/%y")%>
+      </div>
+        <label class="col-md-2 form-label">Sex</label>
+      <div class="col-md-5">
+        <%= @person.gender%>
+      </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-2 form-label">Given names</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.given_names %>
-      </span>
+    <label class="col-md-2 form-label">Address</label>
+    <div class="col-md-5">
+        <%= @person.address%>
+    </div>
+    <div class="col-md-5">
+    <%= link_to icon_tag("pencil") + ' Edit', edit_person_path(@person), class: 'btn btn-primary' %>
     </div>
   </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Known as</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.known_as %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Address line</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.address_line %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Address line 2</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.address_line_2 %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Town</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.town %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">State</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.state %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Postcode</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.postcode %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Sex</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.sex %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Dob</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.dob %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Ihi</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.ihi %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Dva</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.dva %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Phone</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.phone %>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 form-label">Created by</label>
-    <div class="col-md-10 control-label uneditable-input">
-      <span>
-        <%= @person.created_by %>
-      </span>
-    </div>
-  </div>
+  <hr />
 
   <div class="form-group">
     <label class="col-md-2 form-label">Conditions</label>
-    <div class="col-md-10 control-label uneditable-input">
+    <div class="col-md-10">
       <span id='conditions'>
         <ul>
           <% for  @condition in  @person.conditions %>
@@ -143,12 +41,12 @@
   </div>
   
    <%= render 'condition' %>
-   
+    <div class="form-group"></div>
+
   <div class="form-actions col-md-offset-2">
-    <%= link_to icon_tag("pencil") + ' Edit', edit_person_path(@person), class: 'btn btn-primary' %>
+
     <%= link_to 'Back', people_path, class: 'btn' %>
   </div>
 
- 
-  <%= editable @person, :family_name %>
+ <!--<%= editable @person, :family_name %>  -->
 </div>
