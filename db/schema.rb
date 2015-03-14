@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309104857) do
+ActiveRecord::Schema.define(version: 20150314090429) do
 
   create_table "conditions", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20150309104857) do
   create_table "conditions_people", id: false, force: :cascade do |t|
     t.integer "condition_id", null: false
     t.integer "person_id",    null: false
+  end
+
+  create_table "crafts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "goals", force: :cascade do |t|
@@ -60,6 +66,18 @@ ActiveRecord::Schema.define(version: 20150309104857) do
     t.datetime "updated_at",                         null: false
   end
 
+  create_table "organisations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address_line"
+    t.string   "address_line_2"
+    t.string   "town"
+    t.string   "state"
+    t.string   "postcode"
+    t.string   "phone"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "family_name"
     t.string   "given_names"
@@ -77,6 +95,18 @@ ActiveRecord::Schema.define(version: 20150309104857) do
     t.integer  "created_by"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string   "family_name"
+    t.string   "given_names"
+    t.integer  "organisation_id"
+    t.integer  "user_id"
+    t.integer  "craft_id"
+    t.string   "phone"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "title"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -106,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150309104857) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "provider_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

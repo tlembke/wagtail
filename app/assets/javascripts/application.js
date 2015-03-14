@@ -21,6 +21,8 @@
 
 $('.editable').editable();
 
+// ----------------------------------
+// Condition Add
 $('#condition').on('change', function() {
 	if ($(this).val()=="New..."){
   		$('#myModal').modal('show');
@@ -57,4 +59,21 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 	  };
 });
 
+// ----------------------------------
 
+// ----------------------------------
+// Location Add
+$('#location').on('change', function() {
+  if ($(this).val()=="0"){
+      $.ajax({
+        type: "GET",
+        url: "/organisations/newlocation",
+      });
+  }
+  else{
+      $.ajax({
+        type: "GET",
+        url: "/organisations/"+$( "#location option:selected" ).val()+"/change",
+      });
+  }
+});

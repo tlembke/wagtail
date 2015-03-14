@@ -1,0 +1,16 @@
+<% @title = @provider.full_name %>
+<% if @provider.craft_id %>
+	<div class="row">
+	<h4 class="col-md-offset-1 col-md-6"><%= @provider.craft.name %></h4>
+	</div>
+	<div class="form-group"></div>
+<% end %>
+
+
+<% @organisation=@provider.organisation %>
+<%= render 'showlocation' %>
+
+  <div class="form-actions col-md-offset-2">
+    <%= link_to icon_tag("pencil") + ' Edit', edit_provider_path(@provider), class: 'btn btn-primary' %>
+    <%= link_to 'Back', providers_path, class: 'btn' %>
+  </div>

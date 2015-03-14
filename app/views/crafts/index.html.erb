@@ -1,0 +1,41 @@
+<% @title = "Listing crafts" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Crafts/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_craft_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Craft
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @crafts.each do |craft| %>
+        <tr>
+          <td><%= craft.name %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), craft, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_craft_path(craft), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), craft, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @crafts.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No crafts.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+

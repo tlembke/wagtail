@@ -1,0 +1,9 @@
+     <div class='row'>
+     <lable class= 'form-label col-md-2'>Speciality</lable>
+     <div id='craft_select' class='col-md-8'>
+          <select  name='provider[craft_id]' id='location' class="selectpicker">
+          <option value='0'>Select craft</ option>
+          <%= options_from_collection_for_select(Craft.order(:name), :id, :name, @provider.craft_id) %>
+          </select>
+      </div>
+      </div>

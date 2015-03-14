@@ -1,0 +1,17 @@
+<% @title = "Showing craft" %>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-md-2 form-label">Name</label>
+    <div class="col-md-10 control-label uneditable-input">
+      <span>
+        <%= @craft.name %>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-actions col-md-offset-2">
+    <%= link_to icon_tag("pencil") + ' Edit', edit_craft_path(@craft), class: 'btn btn-primary' %>
+    <%= link_to 'Back', crafts_path, class: 'btn' %>
+  </div>
+</div>

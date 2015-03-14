@@ -1,0 +1,69 @@
+
+<%= form_for(@organisation, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+      <%= f.form_group :name do |f| %>
+      <%= f.label :name, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+    <%= f.form_group :address_line do |f| %>
+      <%= f.label :address_line, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :address_line, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :address_line_2 do |f| %>
+      <%= f.label :address_line_2, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :address_line_2, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :town do |f| %>
+      <%= f.label :town, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :town, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :state do |f| %>
+      <%= f.label :state, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :state, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :postcode do |f| %>
+      <%= f.label :postcode, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :postcode, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.form_group :phone do |f| %>
+      <%= f.label :phone, class: 'form-label col-md-2' %>
+      <div class='col-md-8'>
+        <%= f.text_field :phone, class: 'form-control' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="form-actions col-md-offset-3 col-md-9">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to "Cancel", organisations_path, class: 'btn' %>
+  </div>
+<% end %>
+

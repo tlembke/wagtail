@@ -1,0 +1,53 @@
+<% @title = "Listing organisations" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Organisations/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_organisation_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Organisation
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Organisation</th>
+          <th>Address line</th>
+          <th>Address line 2</th>
+          <th>Town</th>
+          <th>State</th>
+          <th>Postcode</th>
+          <th>Phone</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @organisations.each do |organisation| %>
+        <tr>
+         <td><%= organisation.name %></td>
+          <td><%= organisation.address_line %></td>
+          <td><%= organisation.address_line_2 %></td>
+          <td><%= organisation.town %></td>
+          <td><%= organisation.state %></td>
+          <td><%= organisation.postcode %></td>
+          <td><%= organisation.phone %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye"), organisation, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_organisation_path(organisation), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash-o"), organisation, rel: 'tooltip', title: 'Delete',
+                        data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @organisations.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No organisations.</td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+
