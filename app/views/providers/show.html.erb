@@ -1,5 +1,5 @@
 <% @title = @provider.full_name %>
-<% if @provider.craft_id %>
+<% if @provider.craft_id and @provider.craft_id > 1%>
 	<div class="row">
 	<h4 class="col-md-offset-1 col-md-6"><%= @provider.craft.name %></h4>
 	</div>

@@ -47,6 +47,9 @@ gem 'devise'
 
 gem 'x-editable-rails'
 
+gem 'composite_primary_keys'
+
+gem 'bootbox-rails'
 
 source 'http://dresssed.com/gems/9e5c667a916900ce95d8/' do
 	gem 'dresssed-gimlet', '~> 3.0.0'  # For Bootstrap 3

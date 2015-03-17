@@ -71,6 +71,34 @@ class PeopleController < ApplicationController
       end
   end
 
+    def add_team_member
+      @provider=Provider.find(params[:provider])
+      @person = Person.find(params[:id])
+      @new=!Team.exists?([@person.id,@provider.id])
+      if @new
+        @person.providers << @provider
+      end
+      @provider.family_name.blank? ? @name=@provider.organisation.name : @name=@provider.full_name
+
+
+      
+    end
+
+    def remove_team_member
+      @provider=params[:provider]
+      @person = params[:id]
+      if Team.exists?([@person,@provider])
+          Team.find([@person.to_i,@provider.to_i]).delete
+      end
+      respond_to do |format|
+        format.js { render json: nil, status: :ok}
+      end
+      
+
+
+      
+    end
+
 
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314090429) do
+ActiveRecord::Schema.define(version: 20150314223746) do
 
   create_table "conditions", force: :cascade do |t|
     t.string   "name"
@@ -120,6 +120,14 @@ ActiveRecord::Schema.define(version: 20150314090429) do
     t.integer  "task_type",   default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "teams", id: false, force: :cascade do |t|
+    t.integer "person_id",   null: false
+    t.integer "provider_id", null: false
+    t.date    "last_appt"
+    t.date    "next_appt"
+    t.integer "confirmed"
   end
 
   create_table "users", force: :cascade do |t|

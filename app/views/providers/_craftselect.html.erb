@@ -1,0 +1,33 @@
+     <div class='row'>
+     <lable class= 'form-label col-md-2'>Speciality</lable>
+     <div id='craft_select' class='col-md-8'>
+          <select  name='provider[craft_id]' id='craftpicker' class="selectpicker">
+          <option value='0'>Select craft</ option>
+          <%= options_from_collection_for_select(Craft.order(:name), :id, :name, @provider.craft_id) %>
+           <option data-divider="true"></option>
+          <option>New...</option>
+          </select>
+      </div>
+      </div>
+      
+
+          <!-- Modal -->
+<div class="modal fade" id="craftModal" tabindex="-1" role="dialog" aria-labelledby="craftModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="$('#new_condition').val('');"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Enter new speciality/craft</h4>
+        eg Physiotherapy (rather than physiotherpist)
+      </div>
+      <div class="modal-body">
+        <input type=text id='new_craft' name='new_craft'>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  data-dismiss="modal"  onClick="$('#new_craft').val('');">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->

@@ -1,3 +1,7 @@
 <% @title = "Editing provider" %>
 <% @organisation=@provider.organisation %>
 <%= render 'form' %>
+<script>
+$('#craftpicker').selectpicker('refresh');
+$('#locationpicker').selectpicker('refresh');
+</script>

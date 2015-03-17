@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :people do
       member do
         patch 'add_condition'
+        patch 'add_team_member'
+        patch 'remove_team_member'
       end
   end
 

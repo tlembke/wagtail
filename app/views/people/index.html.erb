@@ -18,17 +18,9 @@
           <th>Family name</th>
           <th>Given names</th>
           <th>Known as</th>
-          <th>Address line</th>
-          <th>Address line 2</th>
-          <th>Town</th>
-          <th>State</th>
-          <th>Postcode</th>
+          <th>Address</th>
           <th>Sex</th>
           <th>Dob</th>
-          <th>Ihi</th>
-          <th>Dva</th>
-          <th>Phone</th>
-          <th>Created by</th>
           <th></th>
         </tr>
       </thead>
@@ -38,17 +30,9 @@
           <td><%= person.family_name %></td>
           <td><%= person.given_names %></td>
           <td><%= person.known_as %></td>
-          <td><%= person.address_line %></td>
-          <td><%= person.address_line_2 %></td>
-          <td><%= person.town %></td>
-          <td><%= person.state %></td>
-          <td><%= person.postcode %></td>
-          <td><%= person.sex %></td>
-          <td><%= person.dob %></td>
-          <td><%= person.ihi %></td>
-          <td><%= person.dva %></td>
-          <td><%= person.phone %></td>
-          <td><%= person.created_by %></td>
+          <td><%= person.address %></td>
+          <td><%= person.gender %></td>
+          <td><%= person.dob.strftime("%d/%m/%Y") %></td>
           <td class="actions">
             <%= link_to icon_tag("eye"), person, rel: 'tooltip', title: 'Show' %>
             <%= link_to icon_tag("pencil"), edit_person_path(person), rel: 'tooltip', title: 'Edit' %>

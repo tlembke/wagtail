@@ -1,0 +1,2 @@
+$("#craftpicker option:eq(0)").after("<option value='<%= @craft.id %>' selected><%= @craft.name %></option>");
+$('#craftpicker').selectpicker('refresh');

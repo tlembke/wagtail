@@ -41,6 +41,7 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootbox-rails (0.4.0)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -54,6 +55,8 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     columnize (0.9.0)
+    composite_primary_keys (8.0.0)
+      activerecord (~> 4.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (3.4.1)
@@ -169,8 +172,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootbox-rails
   byebug
   coffee-rails
+  composite_primary_keys
   devise
   dresssed-gimlet (~> 3.0.0)!
   jbuilder (~> 2.0)

@@ -17,9 +17,12 @@
 //= require dresssed
 //= require editable/bootstrap-editable
 //= require editable/rails
+//= require bootbox
 //= require_tree .
 
 $('.editable').editable();
+
+
 
 // ----------------------------------
 // Condition Add
@@ -61,9 +64,39 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 
 // ----------------------------------
 
+
+// ----------------------------------
+// Craft Add
+$('#craftpicker').on('change', function() {
+  if ($(this).val()=="New..."){
+      $('#craftModal').modal('show');
+  }
+});
+
+
+
+$('#craftModal').on('shown.bs.modal', function () {
+    $('#new_craft').focus()
+  });
+
+$('#craftModal').on('hidden.bs.modal', function (e) {
+    if ($('#new_craft').val()!=""){
+     //$('#conditions').find('ul').append("<li>"+$('#new_condition').val()+"</li>");
+      $.ajax({
+        type: "POST",
+        url: "/crafts",
+        data: { craft: { name: $('#new_craft').val()} },
+      });
+
+    };
+});
+
+// ----------------------------------
+
 // ----------------------------------
 // Location Add
-$('#location').on('change', function() {
+$('#locationpicker').on('change', function() {
+
   if ($(this).val()=="0"){
       $.ajax({
         type: "GET",
@@ -73,7 +106,49 @@ $('#location').on('change', function() {
   else{
       $.ajax({
         type: "GET",
-        url: "/organisations/"+$( "#location option:selected" ).val()+"/change",
+        url: "/organisations/"+$( "#locationpicker option:selected" ).val()+"/change",
       });
   }
 });
+
+
+
+// ----------------------------------
+// Team Member Add
+$('#teampicker').on('change', function() {
+  if ($(this).val()=="New..."){
+      $('#myModal').modal('show');
+  }
+  else if ($(this).val()!=""){
+      // save
+      var provider_id=$(this).val();
+      // name of select is person
+      var person_id=$('#teampicker').attr('name');
+      $.ajax({
+        type: "PATCH",
+        url: "/people/"+person_id+"/add_team_member",
+        data: { provider: provider_id}
+      });
+  }
+});
+
+  $(document).on('click','[data-toggle=confirmation]',function(event) {
+    var provider = $(this).data('provider'); 
+    var person = $(this).data('person'); 
+    var $row = $(this).closest("tr");
+    bootbox.confirm("Are you sure you want to remove team member?",function(result) {
+      if (result){
+        $row.remove();
+        $.ajax({
+          type: "PATCH",
+          url: "/people/"+person+"/remove_team_member",
+          data: { provider: provider}
+        });
+      }
+      else{
+        alert("OK, I won't");
+      }
+    }); 
+  });
+
+

@@ -28,9 +28,11 @@ class CraftsController < ApplicationController
 
     respond_to do |format|
       if @craft.save
+        format.js
         format.html { redirect_to @craft, notice: 'Craft was successfully created.' }
         format.json { render :show, status: :created, location: @craft }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @craft.errors, status: :unprocessable_entity }
       end

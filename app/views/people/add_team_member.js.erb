@@ -1,0 +1,5 @@
+<% if @new %>
+  $('#teamtable tr:last').after("<tr><td><%= @provider.full_name %></td><td><%= @provider.organisation.name %></td><td><td><button type='button' class='btn btn-default' data-toggle='confirmation' data-person='<%= @person.id %>' data-provider='<%= @provider.id %>'><span class='glyphicon glyphicon-remove-circle'></span></button></td></td></tr>");
+<% end %>
+$("#teampicker").prop("selectedIndex", 0);
+$('#teampicker').selectpicker('refresh');

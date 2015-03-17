@@ -1,0 +1,32 @@
+<div class="row">
+	<label class="col-md-2 form-label">Care Team</label>
+	<span class='col-md-8'>
+	<table id='teamtable' class='table'\>
+		<tr>
+			<th>Name</th>
+			<th>Organisation</th>
+			<th>Last Appt</th>
+			<th></th>
+		</tr>
+		<% for provider in  @person.providers %>
+		<tr>
+			<td><%= provider.full_name %></td>
+			<td><%= provider.organisation.name %></td>
+			<td><%= Team.find([@person.id,provider.id]).last_appt %></td>
+			<td><button type="button" class="btn btn-default" data-toggle="confirmation" data-person='<%= @person.id %>' data-provider='<%= provider.id %>'><span class="glyphicon glyphicon-remove-circle"></span></button></td>
+		</tr> 
+		<% end %>
+	</table>
+	</span>
+
+</div>
+
+<div class='col-md-10 col-md-offset-2' id='condition_div'>
+<select id='teampicker' name='<%= @person.id %>' class='selectpicker'>
+<option value="">Add team member...</option>
+<%= Provider.getSelectOptions.html_safe %>
+</select>
+</div>
+
+
+

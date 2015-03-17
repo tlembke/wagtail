@@ -1,12 +1,14 @@
 class Person < ActiveRecord::Base
 	has_many :goals
 	has_and_belongs_to_many :conditions
+  has_many :teams
+  has_many :providers, :through=> :teams
 	has_many :results
-    has_many :narratives
-    has_many :careroles
-    has_many :measuresvalues
+  has_many :narratives
+  has_many :careroles
+  has_many :measuresvalues
 
-    validates :family_name, :given_names, presence: true
+  validates :family_name, :given_names, presence: true
 
     def family_name_given_names
    		if self.given_names.blank?
@@ -33,14 +35,15 @@ class Person < ActiveRecord::Base
  	end
 
     def address
-      	address= self.address_line
+      address= self.address_line
     	address+=", " if self.address_line!=""
     	address+=self.town
+      return address
   	end
 
   	def full_address
     	r = address_line
-    	r+="\n" unless address_line.blank?
+    	r+="," unless address_line.blank?
     	r+= town+" "+postcode
     	return r
   	end

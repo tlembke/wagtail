@@ -1,7 +1,7 @@
      <div class='row'>
      <lable class= 'form-label col-md-2'>Location</lable>
      <div id='location_select' class='col-md-8'>
-          <select  name='provider[organisation_id]' id='location' class="selectpicker">
+          <select  name='provider[organisation_id]' id='locationpicker' class="selectpicker">
           <option value='0'>New Location</ option>
           <%= options_from_collection_for_select(Organisation.where.not(:name => '').order(:name), :id, :name, @provider.organisation_id) %>
           </select>
