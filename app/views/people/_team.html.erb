@@ -22,9 +22,11 @@
 </div>
 
 <div class='col-md-10 col-md-offset-2' id='condition_div'>
-<select id='teampicker' name='<%= @person.id %>' class='selectpicker'>
-<option value="">Add team member...</option>
+<select id='teampicker' name='<%= @person.id %>' data-person='<%= @person.id %>' class='selectpicker'>
+<option value="">Add to team...</option>
 <%= Provider.getSelectOptions.html_safe %>
+<option data-divider="true"></option>
+<option value='new'>Enter new provider/organisation</option>
 </select>
 </div>
 

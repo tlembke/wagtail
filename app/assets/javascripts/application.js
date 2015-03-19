@@ -22,6 +22,24 @@
 
 $('.editable').editable();
 
+// jquery extend function
+
+// var redirect = 'http://www.website.com/page?id=23231';
+//$.redirectPost(redirect, {x: 'example', y: 'abc'});
+
+
+$.extend(
+{
+    redirectPost: function(location, args)
+    {
+        var form = '';
+        $.each( args, function( key, value ) {
+            form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+        });
+        $('<form action="'+location+'" method="POST">'+form+'</form>').appendTo('body').submit();
+    }
+});
+
 
 
 // ----------------------------------
@@ -116,8 +134,10 @@ $('#locationpicker').on('change', function() {
 // ----------------------------------
 // Team Member Add
 $('#teampicker').on('change', function() {
-  if ($(this).val()=="New..."){
-      $('#myModal').modal('show');
+  var person = $(this).data('person'); 
+  if ($(this).val()=="new"){
+      alert ("this will redirect");
+      window.location="http://"+window.location.host+"/providers/new?person="+person
   }
   else if ($(this).val()!=""){
       // save

@@ -17,6 +17,9 @@ class ProvidersController < ApplicationController
     @organisation=Organisation.new
     @provider = Provider.new
     @provider.organisation=@organisation
+    if params[:person]
+        @person=Person.find(params[:person])
+    end
   end
 
   # GET /providers/1/edit
@@ -32,9 +35,17 @@ class ProvidersController < ApplicationController
       @organisation.save
       @provider.organisation_id=@organisation.id
     end
+
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
+        @redirect=@provider
+        if params[:person]
+              @person=Person.find(params[:person])
+              @person.providers << @provider
+              @redirect=@person
+        end
+
+        format.html { redirect_to @redirect, notice: 'Provider was successfully created.' }
         format.json { render :show, status: :created, location: @provider }
       else
         format.html { render :new }

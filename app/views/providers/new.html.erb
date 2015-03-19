@@ -1,3 +1,6 @@
 <% @title = "New provider" %>
+<% if @person %>
+		<% @title += " for "+@person.full_name %>
+<% end %>
 
 <%= render 'form' %>
